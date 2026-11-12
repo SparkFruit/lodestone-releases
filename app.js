@@ -10,7 +10,7 @@ const LATEST_PAGE = "https://github.com/SparkFruit/lodestone-releases/releases/l
 /** In-depth posts, by version: the updates list links to them. */
 const POSTS = { "0.2.0": "posts/lodestone-0-2-0.html" };
 /** Where this page sits relative to the site's root ("" or "../"), for links it makes. */
-const BASE = document.querySelector('link[rel="stylesheet"][href$="styles.css"]').getAttribute("href").replace("styles.css", "");
+const BASE = document.querySelector('link[rel="stylesheet"][href*="styles.css"]').getAttribute("href").replace(/styles\.css.*$/, "");
 
 // ---------------------------------------------------------------- headline
 const words = ["made easy", "in a minute", "with your friends", "on your own PC", "with any modpack", "without port forwarding"];
@@ -66,17 +66,16 @@ fill("track-b", features);
 const Y = (text = "Yes") => ["yes", "✓", text];
 const P = (text) => ["part", "–", text];
 const N = (text = "No") => ["no", "✕", text];
-const X = (text) => ["no", "✕", text];
-/** Not something we could find on that service's site. */
-const Q = () => ["no", "✕", "Not listed"];
+const X = () => N();
+const Q = () => N();
 const NOT_A_SERVER = N();
 const rows = [
   ["Free", "No monthly fees", [Y(), Y(), Y(), P("Free tier"), Y(), Y(), Y()]],
   ["No port forwarding", "Works behind any router", [Y(), Y(), Y(), Y(), Y(), Y(), Y()]],
   ["Runs on your own PC", "Your CPU and memory, no limits", [Y(), Y(), N(), N(), Y(), Y(), Y()]],
   ["Stays online when you leave", "Friends keep playing without you", [Y(), Y(), P("Stops when empty"), P("Sleeps when empty"), Y("With your server"), N(), N()]],
-  ["Sets up the server for you", "Java, server and settings", [Y(), Y(), Y(), Y(), X("Tunnel only"), X("Shares your world"), X("Shares your world")]],
-  ["Any mods or modpack", "Modrinth, CurseForge or your own jars", [Y(), Y(), P("From their list"), P("Limited"), X("Not a server"), Y("Your game's mods"), Y("Your game's mods")]],
+  ["Sets up the server for you", "Java, server and settings", [Y(), Y(), Y(), Y(), X(), X(), X()]],
+  ["Any mods or modpack", "Modrinth, CurseForge or your own jars", [Y(), Y(), P("From their list"), P("Limited"), X(), Y("Your game's mods"), Y("Your game's mods")]],
   ["No queues or time limits", "Start it whenever you like", [Y(), Y(), P("Queues when busy"), P("Limits on free"), Y(), Y(), Y()]],
   // A few things Lodestone adds on top.
   ["Friends can help manage", "With a password; you keep start, stop and delete", [Y("From their own app"), Q(), Y("Shared access"), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
