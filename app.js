@@ -66,10 +66,10 @@ fill("track-b", features);
 const Y = (text = "Yes") => ["yes", "✓", text];
 const P = (text) => ["part", "–", text];
 const N = (text = "No") => ["no", "✕", text];
-const X = (text) => ["na", "·", text];
+const X = (text) => ["no", "✕", text];
 /** Not something we could find on that service's site. */
-const Q = () => ["na", "?", "Not listed"];
-const NOT_A_SERVER = X("Not a server manager");
+const Q = () => ["no", "✕", "Not listed"];
+const NOT_A_SERVER = N();
 const rows = [
   ["Free", "No monthly fees", [Y(), Y(), Y(), P("Free tier"), Y(), Y(), Y()]],
   ["No port forwarding", "Works behind any router", [Y(), Y(), Y(), Y(), Y(), Y(), Y()]],
