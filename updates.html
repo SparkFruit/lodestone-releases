@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Updates · Lodestone</title>
+  <meta name="description" content="What's new in Lodestone: every version's changes, and in-depth posts for the big ones." />
+  <meta name="theme-color" content="#0b0c10" />
+  <meta property="og:title" content="Updates · Lodestone" />
+  <meta property="og:description" content="What's new in Lodestone: every version's changes, and in-depth posts for the big ones." />
+  <meta property="og:image" content="assets/shots/home.png" />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="nav" id="top">
+    <a class="brand" href="./"><img src="assets/logo.png" alt="" width="30" height="30" /> Lodestone</a>
+    <nav class="links" id="links">
+      <a href="./#features">Features</a>
+      <a href="./#why">Why Lodestone</a>
+      <a href="updates.html" class="active">Updates</a>
+      <a href="./#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="download.html">Download</a>
+    <button class="menu" id="menu" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main class="page">
+    <section class="page-hero">
+      <span class="eyebrow">Updates</span>
+      <h1>What's new</h1>
+      <p class="lead">Every version's changes, and in-depth posts for the big ones.</p>
+    </section>
+
+    <section class="posts-section">
+      <h2 class="sub-head">In-depth posts</h2>
+      <div class="post-grid">
+        <a class="post-card featured" href="posts/lodestone-0-2-0.html">
+          <div class="post-cover"><img src="assets/shots/remote.png" alt="" loading="lazy" /></div>
+          <div class="post-body">
+            <div class="post-meta"><span class="pill">Version 0.2.0</span><time datetime="2026-11-11">November 11, 2026</time></div>
+            <h3>Friends can help run your server</h3>
+            <p>Remote management with a password, a proper first-run setup, game rules as switches, playit.gg working again, and lighter servers with nothing installed on them.</p>
+            <span class="text-link">Read the post →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="updates-section">
+      <h2 class="sub-head">Every version</h2>
+      <div class="timeline" id="timeline">
+        <p class="muted">Loading updates…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="./"><img src="assets/logo.png" alt="" width="30" height="30" /> Lodestone</a>
+        <p>The easy way to create, share and manage Minecraft servers on your own PC. Free, with no port forwarding.</p>
+        <p class="made">Made with <span class="heart">♥</span> by the Lodestone team</p>
+        <div class="foot-actions">
+          <a class="btn btn-kofi btn-sm kofi-link" href="#" aria-disabled="true"><span class="cup">☕</span> Ko-fi <span class="soon">Soon</span></a>
+          <a class="icon-link" href="https://github.com/SparkFruit/lodestone-releases" aria-label="Lodestone on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="./#features">Features</a>
+        <a href="./#why">Why Lodestone</a>
+        <a href="download.html">Download</a>
+        <a href="updates.html">Updates</a>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <a href="./#faq">FAQ</a>
+        <a href="https://github.com/SparkFruit/lodestone-releases/issues">Report a problem ↗</a>
+        <a href="download.html#versions">All versions</a>
+        <a class="kofi-link" href="#" aria-disabled="true">Ko-fi (soon)</a>
+      </div>
+      <div class="foot-col">
+        <h5>Built with</h5>
+        <a href="https://playit.gg">playit.gg ↗</a>
+        <a href="https://modrinth.com">Modrinth ↗</a>
+        <a href="https://github.com/jpenilla/squaremap">squaremap ↗</a>
+        <a href="https://geysermc.org">Geyser ↗</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>© <span id="year">2026</span> Lodestone. Minecraft is a trademark of Mojang Studios.</p>
+      <p>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Not affiliated with playit.gg, Modrinth, CurseForge or any service compared on this site.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

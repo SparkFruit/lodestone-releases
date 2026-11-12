@@ -1,17 +1,22 @@
-// Lodestone's website: the cycling headline word, the scrolling rows, the comparison table, and
-// the newest download and changelog read from the public releases on GitHub.
+// Lodestone's website, shared by every page: the header, the home page's cycling headline,
+// scrolling rows and comparison, and the newest version and changelog read from the public
+// releases on GitHub. (The download page's version picker is in download.js.)
 
 /** Set this to your Ko-fi page (https://ko-fi.com/...) when it exists; every Ko-fi button uses it. */
 const KOFI_URL = "";
 
 const RELEASES = "https://api.github.com/repos/SparkFruit/lodestone-releases/releases";
 const LATEST_PAGE = "https://github.com/SparkFruit/lodestone-releases/releases/latest";
+/** In-depth posts, by version: the updates list links to them. */
+const POSTS = { "0.2.0": "posts/lodestone-0-2-0.html" };
+/** Where this page sits relative to the site's root ("" or "../"), for links it makes. */
+const BASE = document.querySelector('link[rel="stylesheet"][href$="styles.css"]').getAttribute("href").replace("styles.css", "");
 
 // ---------------------------------------------------------------- headline
 const words = ["made easy", "in a minute", "with your friends", "on your own PC", "with any modpack", "without port forwarding"];
 const rotate = document.getElementById("rotate");
 let wordIndex = 0;
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (rotate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   setInterval(() => {
     rotate.classList.add("out");
     setTimeout(() => {
@@ -49,28 +54,35 @@ const features = [
 const chip = ([block, title, text]) =>
   `<div class="chip"><img src="assets/blocks/${block}.webp" alt="" loading="lazy" /><div><b>${title}</b><span>${text}</span></div></div>`;
 // Each row holds its cards twice, so scrolling by half loops without a jump.
-const fill = (id, list) => (document.getElementById(id).innerHTML = [...list, ...list].map(chip).join(""));
+const fill = (id, list) => {
+  const track = document.getElementById(id);
+  if (track) track.innerHTML = [...list, ...list].map(chip).join("");
+};
 fill("track-a", types);
 fill("track-b", features);
 
 // ---------------------------------------------------------------- comparison
+// Columns: Lodestone, SquidServers, Aternos, Minehut, playit.gg, e4mc, Essential.
 const Y = (text = "Yes") => ["yes", "✓", text];
 const P = (text) => ["part", "–", text];
 const N = (text = "No") => ["no", "✕", text];
+const X = (text) => ["na", "·", text];
 const rows = [
-  ["Free", "No monthly fees", [Y(), Y(), N(), Y()]],
-  ["No port forwarding", "Works behind any router", [Y(), Y(), Y(), N()]],
-  ["Runs on your own PC", "Your CPU and memory, no limits", [Y(), N(), N(), Y()]],
-  ["Any mods or modpack", "Modrinth, CurseForge or your own jars", [Y(), P("Limited"), Y(), P("By hand")]],
-  ["No queues or time limits", "Start it whenever you like", [Y(), P("Queues, idle stops"), Y(), Y()]],
-  ["Set up in a minute", "Java, server and settings done for you", [Y(), Y(), Y(), N()]],
-  ["Everything in one app", "Console, players, map, backups", [Y(), P("Web panel"), P("Web panel"), N("Separate tools")]],
-  ["Friends can help manage", "Without giving away the server", [Y(), P("Varies"), Y("Sub-users"), N()]],
+  ["Free", "No monthly fees", [Y(), Y(), Y(), P("Free tier"), Y(), Y(), Y()]],
+  ["No port forwarding", "Works behind any router", [Y(), Y(), Y(), Y(), Y(), Y(), Y()]],
+  ["Runs on your own PC", "Your CPU and memory, no limits", [Y(), Y(), N(), N(), Y(), Y(), Y()]],
+  ["Stays online when you leave", "Friends keep playing without you", [Y(), Y(), P("Stops when empty"), P("Sleeps when empty"), Y("With your server"), N(), N()]],
+  ["Sets up the server for you", "Java, server and settings", [Y(), Y(), Y(), Y(), X("Tunnel only"), X("Shares your world"), X("Shares your world")]],
+  ["Any mods or modpack", "Modrinth, CurseForge or your own jars", [Y(), Y(), P("From their list"), P("Limited"), X("Not a server"), Y("Your game's mods"), Y("Your game's mods")]],
+  ["No queues or time limits", "Start it whenever you like", [Y(), Y(), P("Queues when busy"), P("Limits on free"), Y(), Y(), Y()]],
 ];
 const cell = ([kind, mark, text], us) => `<td${us ? ' class="us"' : ""}><span class="mark ${kind}">${mark}</span><span>${text}</span></td>`;
-document.getElementById("compare-body").innerHTML = rows
-  .map(([title, sub, cells]) => `<tr><td><b>${title}</b><small>${sub}</small></td>${cells.map((c, i) => cell(c, i === 0)).join("")}</tr>`)
-  .join("");
+const compareBody = document.getElementById("compare-body");
+if (compareBody) {
+  compareBody.innerHTML = rows
+    .map(([title, sub, cells]) => `<tr><td><b>${title}</b><small>${sub}</small></td>${cells.map((c, i) => cell(c, i === 0)).join("")}</tr>`)
+    .join("");
+}
 
 // ---------------------------------------------------------------- releases
 const escapeHtml = (text) => text.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -84,37 +96,50 @@ const notesList = (body) => {
   return `<ul>${lines.map((l) => `<li>${escapeHtml(l.replace(/^[-*]\s*/, ""))}</li>`).join("")}</ul>`;
 };
 
+/** Every published release, newest first (fetched once per page). */
+let releasesPromise;
+function getReleases() {
+  releasesPromise ??= fetch(RELEASES, { headers: { Accept: "application/vnd.github+json" } })
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+    .then((list) => list.filter((r) => !r.draft && !r.prerelease));
+  return releasesPromise;
+}
+const versionOf = (release) => release.tag_name.replace(/^v/, "");
+const installerOf = (release) => release.assets.find((a) => /-setup\.exe$/i.test(a.name));
+
 async function loadReleases() {
-  const timeline = document.getElementById("timeline");
+  let releases;
   try {
-    const response = await fetch(RELEASES, { headers: { Accept: "application/vnd.github+json" } });
-    if (!response.ok) throw new Error(String(response.status));
-    const releases = (await response.json()).filter((r) => !r.draft && !r.prerelease);
+    releases = await getReleases();
     if (!releases.length) throw new Error("none");
-
-    // The newest Windows installer for every Download button.
-    const latest = releases[0];
-    const version = latest.tag_name.replace(/^v/, "");
-    const setup = latest.assets.find((a) => /-setup\.exe$/i.test(a.name));
-    if (setup) {
-      for (const link of document.querySelectorAll(".download-link")) link.href = setup.browser_download_url;
-      document.getElementById("dl-meta").textContent = `Version ${version} · ${formatSize(setup.size)} · ${formatDate(latest.published_at)}`;
-      for (const label of document.querySelectorAll(".version-label")) label.textContent = `Free · v${version}`;
-    }
-
-    timeline.innerHTML = releases
-      .slice(0, 8)
-      .map(
-        (r, i) => `<article class="entry reveal"><div class="entry-card">
-          <div class="entry-head"><h3>Lodestone ${escapeHtml(r.tag_name.replace(/^v/, ""))}</h3>${i === 0 ? '<span class="tag">Latest</span>' : ""}<time datetime="${r.published_at}">${formatDate(r.published_at)}</time></div>
-          ${notesList(r.body)}
-        </div></article>`,
-      )
-      .join("");
-    observe(timeline.querySelectorAll(".reveal"));
   } catch {
-    timeline.innerHTML = `<p class="muted">Couldn't load the updates right now. <a href="${LATEST_PAGE}">See them on GitHub</a>.</p>`;
+    const timeline = document.getElementById("timeline");
+    if (timeline) timeline.innerHTML = `<p class="muted">Couldn't load the updates right now. <a href="${LATEST_PAGE}">See them on GitHub</a>.</p>`;
+    return;
   }
+
+  // The newest version wherever the page shows it.
+  const latest = releases[0];
+  const setup = installerOf(latest);
+  const meta = document.getElementById("dl-meta");
+  if (meta && setup) meta.textContent = `Version ${versionOf(latest)} · ${formatSize(setup.size)} · ${formatDate(latest.published_at)}`;
+  for (const label of document.querySelectorAll(".version-label")) label.textContent = `Free · v${versionOf(latest)}`;
+
+  const timeline = document.getElementById("timeline");
+  if (!timeline) return;
+  const limit = Number(timeline.dataset.limit || 50);
+  timeline.innerHTML = releases
+    .slice(0, limit)
+    .map((r, i) => {
+      const post = POSTS[versionOf(r)];
+      return `<article class="entry reveal"><div class="entry-card">
+          <div class="entry-head"><h3>Lodestone ${escapeHtml(versionOf(r))}</h3>${i === 0 ? '<span class="tag">Latest</span>' : ""}<time datetime="${r.published_at}">${formatDate(r.published_at)}</time></div>
+          ${notesList(r.body)}
+          ${post ? `<a class="text-link" href="${BASE}${post}">Read the in-depth post →</a>` : ""}
+        </div></article>`;
+    })
+    .join("");
+  observe(timeline.querySelectorAll(".reveal"));
 }
 
 // ---------------------------------------------------------------- Ko-fi
@@ -164,8 +189,8 @@ const io = new IntersectionObserver(
 function observe(elements) {
   for (const el of elements) io.observe(el);
 }
-for (const el of document.querySelectorAll(".panel, .tile, .table-wrap, .dl-card, .about-card")) el.classList.add("reveal");
+for (const el of document.querySelectorAll(".panel, .tile, .table-wrap, .dl-card, .about-card, .faq-list, .platform, .version-card, .post-card, .steps li")) el.classList.add("reveal");
 observe(document.querySelectorAll(".reveal"));
 
 loadReleases();
-document.getElementById("year").textContent = String(new Date().getFullYear());
+for (const year of document.querySelectorAll("#year")) year.textContent = String(new Date().getFullYear());

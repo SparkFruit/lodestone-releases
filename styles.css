@@ -144,17 +144,11 @@ section { scroll-margin-top: 80px; }
 .panel.flip .panel-text { order: 2; }
 .panel-text h3 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; font-weight: 800; }
 .panel-text p { margin-top: 16px; color: var(--ink-2); font-size: 16.5px; }
-.frame { padding: 14px; border-radius: 28px; }
-.frame img { border-radius: 16px; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); }
+.frame { padding: 0; }
+.frame img { border-radius: 18px; box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08); }
 /* Zooms into a screenshot whose subject is small in the middle. */
-.crop { overflow: hidden; border-radius: 16px; aspect-ratio: 1440 / 900; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7); }
+.crop { overflow: hidden; border-radius: 18px; aspect-ratio: 1440 / 900; box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08); }
 .crop img { width: 100%; transform: scale(1.75); transform-origin: 50% 46%; border: 0; box-shadow: none; border-radius: 0; }
-.frame-purple { background: linear-gradient(135deg, #7c6cff, #4f46e5); }
-.frame-green { background: linear-gradient(135deg, #34d399, #059669); }
-.frame-blue { background: linear-gradient(135deg, #60a5fa, #2563eb); }
-.frame-amber { background: linear-gradient(135deg, #fbbf24, #ea580c); }
-.frame-pink { background: linear-gradient(135deg, #f472b6, #a855f7); }
-.frame-teal { background: linear-gradient(135deg, #2dd4bf, #0e7490); }
 
 /* Floating Minecraft blocks around the panels. */
 .float { position: absolute; width: 92px; pointer-events: none; filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.55)); animation: bob 7s ease-in-out infinite; z-index: 2; }
@@ -178,23 +172,26 @@ section { scroll-margin-top: 80px; }
 /* ---------------------------------------------------------------- compare */
 .why { padding: 80px 20px; max-width: var(--max); margin: 0 auto; }
 .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line-2); background: rgba(21, 23, 30, 0.75); }
-.compare { width: 100%; border-collapse: collapse; min-width: 760px; }
+.compare { width: 100%; border-collapse: collapse; min-width: 980px; }
+.compare td:first-child { min-width: 200px; }
 .compare th, .compare td { padding: 18px 16px; text-align: center; border-bottom: 1px solid var(--line); }
 .compare tbody tr:last-child td { border-bottom: 0; }
 .compare th { font: 600 14px var(--display); color: var(--ink-2); background: rgba(255, 255, 255, 0.025); }
 .compare th:first-child, .compare td:first-child { text-align: left; }
 .compare th.us { color: var(--ink); }
-.compare th.us img { margin: 0 auto 6px; }
+.compare th img { margin: 0 auto 6px; width: 26px; height: 26px; object-fit: contain; border-radius: 6px; }
+.compare th span { display: block; }
 .compare th.us, .compare td.us { background: rgba(139, 123, 255, 0.1); box-shadow: inset 1px 0 0 rgba(139, 123, 255, 0.35), inset -1px 0 0 rgba(139, 123, 255, 0.35); }
 .compare td b { display: block; font-weight: 600; font-size: 15px; }
 .compare td small { display: block; color: var(--ink-3); font-size: 13px; margin-top: 2px; }
 .mark { display: block; font-size: 18px; font-weight: 700; line-height: 1; }
 .mark + span { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ink-3); }
-.yes { color: var(--ok); } .part { color: var(--warn); } .no { color: var(--bad); }
+.yes { color: var(--ok); } .part { color: var(--warn); } .no { color: var(--bad); } .na { color: var(--ink-3); }
 td.us .mark + span { color: var(--ok); }
 .legend { text-align: center; margin-top: 16px; color: var(--ink-3); font-size: 13.5px; }
 .legend span { font-weight: 700; margin-left: 10px; }
 .legend em { font-style: normal; }
+.legend.small { margin-top: 6px; font-size: 12px; }
 
 /* ---------------------------------------------------------------- download */
 .download { padding: 60px 20px; max-width: var(--max); margin: 0 auto; }
