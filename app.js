@@ -71,13 +71,6 @@ const X = (text) => ["na", "·", text];
 const Q = () => ["na", "?", "Not listed"];
 const NOT_A_SERVER = X("Not a server manager");
 const rows = [
-  // Where Lodestone stands out.
-  ["Friends can help manage", "With a password; you keep start, stop and delete", [Y("From their own app"), Q(), Y("Shared access"), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
-  ["Live world map", "Players moving on your world, built in", [Y("Built in"), Q(), P("Via plugins"), P("Via plugins"), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
-  ["Performance analytics", "TPS, memory, players over time", [Y(), Q(), Q(), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
-  ["Scheduled backups", "Kept while it runs, one-click restore", [Y(), Q(), Y(), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
-  ["Game rules as switches", "Keep inventory and more, no commands", [Y(), Q(), P("By command"), P("By command"), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
-  // The basics.
   ["Free", "No monthly fees", [Y(), Y(), Y(), P("Free tier"), Y(), Y(), Y()]],
   ["No port forwarding", "Works behind any router", [Y(), Y(), Y(), Y(), Y(), Y(), Y()]],
   ["Runs on your own PC", "Your CPU and memory, no limits", [Y(), Y(), N(), N(), Y(), Y(), Y()]],
@@ -85,6 +78,10 @@ const rows = [
   ["Sets up the server for you", "Java, server and settings", [Y(), Y(), Y(), Y(), X("Tunnel only"), X("Shares your world"), X("Shares your world")]],
   ["Any mods or modpack", "Modrinth, CurseForge or your own jars", [Y(), Y(), P("From their list"), P("Limited"), X("Not a server"), Y("Your game's mods"), Y("Your game's mods")]],
   ["No queues or time limits", "Start it whenever you like", [Y(), Y(), P("Queues when busy"), P("Limits on free"), Y(), Y(), Y()]],
+  // A few things Lodestone adds on top.
+  ["Friends can help manage", "With a password; you keep start, stop and delete", [Y("From their own app"), Q(), Y("Shared access"), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
+  ["Live world map", "Players moving on your world, built in", [Y("Built in"), Q(), P("Via plugins"), P("Via plugins"), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
+  ["Performance analytics", "TPS, memory, players over time", [Y(), Q(), Q(), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
 ];
 const cell = ([kind, mark, text], us) => `<td${us ? ' class="us"' : ""}><span class="mark ${kind}">${mark}</span><span>${text}</span></td>`;
 const compareBody = document.getElementById("compare-body");
