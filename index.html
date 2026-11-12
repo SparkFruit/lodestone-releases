@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lodestone · Minecraft servers made easy</title>
+  <meta name="description" content="Lodestone is a free desktop app that creates, runs and manages Minecraft servers on your own PC, with an address friends can join from anywhere and no port forwarding." />
+  <meta name="theme-color" content="#0d0e12" />
+  <meta property="og:title" content="Lodestone · Minecraft servers made easy" />
+  <meta property="og:description" content="Create a Minecraft server in a minute, share it with friends without port forwarding, and manage everything from one app." />
+  <meta property="og:image" content="assets/shots/home.png" />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="nav" id="top">
+    <a class="brand" href="#top"><img src="assets/logo.png" alt="" width="30" height="30" /> Lodestone</a>
+    <nav class="links" id="links">
+      <a href="#features">Features</a>
+      <a href="#why">Why Lodestone</a>
+      <a href="#updates">Updates</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="#download">Download</a>
+    <button class="menu" id="menu" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-logo"><img src="assets/logo.png" alt="Lodestone" width="132" height="132" /></div>
+      <h1>
+        Minecraft servers,
+        <span class="rotator" aria-live="polite"><span id="rotate">made easy</span></span>
+      </h1>
+      <p class="lead">Create a server in a minute, give friends an address that works from anywhere with no port forwarding, and manage everything from one free app on your own PC.</p>
+      <div class="cta">
+        <a class="btn btn-primary btn-lg download-link" href="https://github.com/SparkFruit/lodestone-releases/releases/latest">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4.5 10.5 3.4v8.1H3V4.5Zm0 15 7.5 1.1v-8H3v6.9Zm8.4 1.2L21 22v-9.4h-9.6v8.1Zm0-17.4v8.2H21V2L11.4 3.3Z"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#features">See what it does</a>
+      </div>
+      <p class="fine"><span class="version-label">Free</span> · Windows 10 and 11 · Updates itself</p>
+    </section>
+
+    <!-- Marquee -->
+    <section class="marquee" aria-label="Server types and features">
+      <div class="row"><div class="track" id="track-a"></div></div>
+      <div class="row reverse"><div class="track" id="track-b"></div></div>
+    </section>
+
+    <!-- Showcase panels -->
+    <section class="showcase" id="features">
+      <div class="section-head">
+        <span class="eyebrow">Features</span>
+        <h2>Everything your server needs, in one app</h2>
+      </div>
+
+      <article class="panel">
+        <img class="float f1" src="assets/blocks/crafting_table.webp" alt="" aria-hidden="true" />
+        <div class="panel-text">
+          <h3>A server in a minute</h3>
+          <p>Pick Vanilla, Paper, Fabric, NeoForge, Forge, Quilt, Bedrock or a whole modpack. Lodestone downloads the right Java and the server, sets the memory and starts it. No command lines.</p>
+        </div>
+        <div class="frame frame-purple"><div class="crop"><img src="assets/shots/create.png" alt="Choosing a server type in Lodestone" loading="lazy" /></div></div>
+      </article>
+
+      <article class="panel flip">
+        <img class="float f2" src="assets/blocks/grass_block.webp" alt="" aria-hidden="true" />
+        <div class="panel-text">
+          <h3>Friends join from anywhere</h3>
+          <p>Lodestone gives your server a public address through playit.gg, built right into the app. No router settings, no port forwarding. Bedrock players and Simple Voice Chat get their own addresses too.</p>
+        </div>
+        <div class="frame frame-green"><img src="assets/shots/tunnels.png" alt="A server's public addresses" loading="lazy" /></div>
+      </article>
+
+      <article class="panel">
+        <img class="float f3" src="assets/blocks/diamond_ore.webp" alt="" aria-hidden="true" />
+        <div class="panel-text">
+          <h3>See how it's running</h3>
+          <p>CPU, memory, ticks per second and players over time, with peak players, monthly actives and average session length. Spot lag before your friends do.</p>
+        </div>
+        <div class="frame frame-blue"><img src="assets/shots/performance.png" alt="Server performance and analytics" loading="lazy" /></div>
+      </article>
+
+      <article class="panel flip">
+        <img class="float f4" src="assets/blocks/chest.webp" alt="" aria-hidden="true" />
+        <div class="panel-text">
+          <h3>Manage players properly</h3>
+          <p>Health, hunger, ping and location at a glance. Kick, timed bans, teleport, heal, operators, and the real Minecraft inventory screen to move, add or edit items.</p>
+        </div>
+        <div class="frame frame-amber"><img src="assets/shots/players.png" alt="Players on a server" loading="lazy" /></div>
+      </article>
+
+      <article class="panel">
+        <img class="float f5" src="assets/blocks/bookshelf.webp" alt="" aria-hidden="true" />
+        <div class="panel-text">
+          <h3>Mods in one click</h3>
+          <p>Search Modrinth and CurseForge, install with every mod it needs, and get told about updates. Lodestone reads your installed jars and offers whatever is missing.</p>
+        </div>
+        <div class="frame frame-pink"><img src="assets/shots/mods.png" alt="Installing mods" loading="lazy" /></div>
+      </article>
+
+      <article class="panel flip">
+        <img class="float f6" src="assets/blocks/barrel.webp" alt="" aria-hidden="true" />
+        <div class="panel-text">
+          <h3>A console that's nice to use</h3>
+          <p>Colours, filters for chat, joins and warnings, command history and Tab completion. Crashes come with a plain-English report of what went wrong.</p>
+        </div>
+        <div class="frame frame-teal"><img src="assets/shots/console.png" alt="The server console" loading="lazy" /></div>
+      </article>
+
+      <div class="grid">
+        <div class="tile"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg></span><h4>Live world map</h4><p>Your world drawn from its save files, with players moving on it. Nothing to install on the server.</p></div>
+        <div class="tile"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h11l3 3v15H5z"/><path d="M8 3v6h8V3M8 21v-7h8v7"/></svg></span><h4>Backups</h4><p>On a schedule, kept while the server runs, restored in a click.</p></div>
+        <div class="tile"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg></span><h4>Friends can help</h4><p>Share a password and a friend manages the server from their own Lodestone. Starting, stopping and deleting stay with you.</p></div>
+        <div class="tile"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><h4>Game rules</h4><p>Keep inventory, day and night, mob griefing and more, as simple switches.</p></div>
+        <div class="tile"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><h4>Bedrock players</h4><p>Geyser set up for you, so friends on phones and consoles join your Java server.</p></div>
+        <div class="tile"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 4v3h3"/><path d="M4 13a8 8 0 0 0 14.5 4.5M20 20v-3h-3"/></svg></span><h4>Updates itself</h4><p>New versions install with a click, and your servers are stopped safely first.</p></div>
+      </div>
+    </section>
+
+    <!-- Why Lodestone -->
+    <section class="why" id="why">
+      <div class="section-head">
+        <span class="eyebrow">Compare</span>
+        <h2>Why Lodestone?</h2>
+        <p>How Lodestone compares with the usual ways to run a server for friends.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="us"><img src="assets/logo.png" alt="" width="26" height="26" /><span>Lodestone</span></th>
+              <th>Free online hosts</th>
+              <th>Paid hosting</th>
+              <th>Doing it yourself</th>
+            </tr>
+          </thead>
+          <tbody id="compare-body"></tbody>
+        </table>
+      </div>
+      <p class="legend"><span class="yes">✓</span> Yes <span class="part">–</span> Partly <span class="no">✕</span> No · <em>Typical for each kind of service; individual services vary.</em></p>
+    </section>
+
+    <!-- Download -->
+    <section class="download" id="download">
+      <div class="dl-card">
+        <img class="float f7" src="assets/blocks/lodestone.webp" alt="" aria-hidden="true" />
+        <div class="dl-main">
+          <span class="eyebrow">Download</span>
+          <h2>Get Lodestone</h2>
+          <p>Free, for Windows 10 and 11. It keeps itself up to date after you install it.</p>
+          <a class="btn btn-primary btn-lg download-link" href="https://github.com/SparkFruit/lodestone-releases/releases/latest">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4.5 10.5 3.4v8.1H3V4.5Zm0 15 7.5 1.1v-8H3v6.9Zm8.4 1.2L21 22v-9.4h-9.6v8.1Zm0-17.4v8.2H21V2L11.4 3.3Z"/></svg>
+            <span>Download for Windows</span>
+          </a>
+          <p class="fine" id="dl-meta">Latest version on GitHub</p>
+        </div>
+        <ul class="dl-notes">
+          <li><strong>Windows may warn you</strong> the first time, because the installer isn't signed by a company yet. Click <em>More info</em>, then <em>Run anyway</em>.</li>
+          <li><strong>macOS and Linux</strong> are on the way.</li>
+          <li><strong>You'll need</strong> enough memory for your server (2–4 GB for most). Lodestone downloads Java for you.</li>
+          <li><a href="https://github.com/SparkFruit/lodestone-releases/releases">All versions</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Updates -->
+    <section class="updates" id="updates">
+      <div class="section-head">
+        <span class="eyebrow">Changelog</span>
+        <h2>Updates</h2>
+        <p>What changed in each version.</p>
+      </div>
+      <div class="timeline" id="timeline">
+        <p class="muted">Loading updates…</p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="about-card">
+        <img class="float f8" src="assets/blocks/amethyst_block.webp" alt="" aria-hidden="true" />
+        <span class="eyebrow">About</span>
+        <h2>Made by players, for players</h2>
+        <p>Lodestone is a small, independent project by SparkFruit. We built it because hosting a server for friends shouldn't mean port forwarding, command lines, waiting in queues or paying every month. Your server runs on your own PC, at full speed, with everything you need in one place.</p>
+        <p>It's free. If you'd like to help keep it going, you can support us on Ko-fi.</p>
+        <div class="about-actions">
+          <a class="btn btn-kofi kofi-link" href="#" aria-disabled="true"><span class="cup">☕</span> Support us on Ko-fi <span class="soon">Coming soon</span></a>
+          <a class="btn btn-ghost" href="https://github.com/SparkFruit/lodestone-releases/issues">Report a problem</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top"><img src="assets/logo.png" alt="" width="30" height="30" /> Lodestone</a>
+        <p>The easy way to create, share and manage Minecraft servers on your own PC. Free, with no port forwarding.</p>
+        <p class="made">Made with <span class="heart">♥</span> by SparkFruit</p>
+        <div class="foot-actions">
+          <a class="btn btn-kofi btn-sm kofi-link" href="#" aria-disabled="true"><span class="cup">☕</span> Ko-fi <span class="soon">Soon</span></a>
+          <a class="icon-link" href="https://github.com/SparkFruit/lodestone-releases" aria-label="Lodestone on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="#features">Features</a>
+        <a href="#why">Why Lodestone</a>
+        <a href="#download">Download</a>
+        <a href="#updates">Updates</a>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <a href="https://github.com/SparkFruit/lodestone-releases/issues">Report a problem ↗</a>
+        <a href="https://github.com/SparkFruit/lodestone-releases/releases">All versions ↗</a>
+        <a class="kofi-link" href="#" aria-disabled="true">Ko-fi (soon)</a>
+      </div>
+      <div class="foot-col">
+        <h5>Built with</h5>
+        <a href="https://playit.gg">playit.gg ↗</a>
+        <a href="https://modrinth.com">Modrinth ↗</a>
+        <a href="https://github.com/jpenilla/squaremap">squaremap ↗</a>
+        <a href="https://geysermc.org">Geyser ↗</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>© <span id="year">2026</span> SparkFruit. Minecraft is a trademark of Mojang Studios.</p>
+      <p>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Not affiliated with playit.gg, Modrinth or CurseForge.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,9 +1,7 @@
 # Lodestone
 
-Downloads for Lodestone, a Minecraft server manager.
+The easy way to create, share and manage Minecraft servers on your own PC. Free, with no port forwarding.
 
-- **Windows:** `Lodestone_*_x64-setup.exe`
-- **macOS:** the `.dmg` (`aarch64` for Apple silicon, `x64` for Intel)
-- **Linux:** the `.AppImage`, `.deb` or `.rpm`
+**Website and download:** https://sparkfruit.github.io/lodestone-releases/
 
-Get the newest from [Releases](../../releases/latest). Lodestone updates itself after that.
+- **Windows:** `Lodestone_*_x64-setup.exe` from [the latest release](../../releases/latest). Lodestone updates itself after that.
