@@ -1,124 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lodestone 0.2.0: friends can help run your server</title>
-  <meta name="description" content="Remote management with a password, a first-run setup, game rules, playit.gg fixed, and lighter servers." />
-  <meta name="theme-color" content="#0b0c10" />
-  <meta property="og:title" content="Lodestone 0.2.0: friends can help run your server" />
-  <meta property="og:description" content="Remote management with a password, a first-run setup, game rules, playit.gg fixed, and lighter servers." />
-  <meta property="og:image" content="../assets/shots/home.png" />
-  <link rel="icon" href="../assets/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../styles.css?v=6" />
-  <link rel="stylesheet" href="../pages.css?v=6" />
+<meta charset="utf-8" />
+<title>Lodestone has moved</title>
+<link rel="canonical" href="https://lodestone-app.github.io/posts/lodestone-0-2-0.html" />
+<meta http-equiv="refresh" content="0; url=https://lodestone-app.github.io/posts/lodestone-0-2-0.html" />
+<script>
+  var path = location.pathname.replace(/^\/lodestone-releases\/?/, "");
+  location.replace("https://lodestone-app.github.io/" + path + location.search + location.hash);
+</script>
 </head>
-<body>
-  <div class="backdrop" aria-hidden="true"></div>
-
-  <header class="nav" id="top">
-    <a class="brand" href="../"><img src="../assets/logo.png" alt="" width="30" height="30" /> Lodestone</a>
-    <nav class="links" id="links">
-      <a href="../#features">Features</a>
-      <a href="../#why">Why Lodestone</a>
-      <a href="../updates.html" class="active">Updates</a>
-      <a href="../#faq">FAQ</a>
-    </nav>
-    <a class="btn btn-primary btn-sm nav-cta" href="../download.html">Download</a>
-    <button class="menu" id="menu" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
-  </header>
-
-  <main class="page">
-    <article class="post">
-      <header class="post-head">
-        <a class="text-link back" href="../updates.html">← All updates</a>
-        <div class="post-meta"><span class="pill">Version 0.2.0</span><time datetime="2026-11-11">November 11, 2026</time></div>
-        <h1>Friends can help run your server</h1>
-        <p class="lead">0.2.0 is the biggest Lodestone update yet. Friends you trust can now manage your server from their own Lodestone, new players get a proper welcome, game rules are simple switches, playit.gg works again, and servers no longer need anything installed on them.</p>
-      </header>
-
-      <figure class="post-figure"><img src="../assets/shots/remote.png" alt="The Remote management card in a server's settings" /><figcaption>Remote management, in a server's Settings.</figcaption></figure>
-
-      <h2>Remote management</h2>
-      <p>Running a server with friends usually means one person does everything. Now you can hand out help without handing over the server.</p>
-      <p>Turn on <strong>Remote management</strong> in a server's Settings and Lodestone makes a short password, like <code>K7QM-4XPA-9TRB</code>. Give a friend the server's address (the same one they join with) and the password. In their Lodestone they press <strong>Connect server</strong>, enter both, and the server appears next to their own.</p>
-      <div class="two-col">
-        <div class="callout good"><h4>They can</h4><ul><li>Use the console</li><li>Kick, ban, teleport and heal players, and edit inventories</li><li>View the map</li><li>Install, update and remove mods</li><li>Make and restore backups</li><li>Change game rules</li></ul></div>
-        <div class="callout"><h4>Only you can</h4><ul><li>Start, stop or restart the server</li><li>Delete it</li><li>Change its settings</li><li>Make someone an operator</li></ul></div>
-      </div>
-      <p>The password itself never travels over the internet: each request is signed with it, so someone watching the connection can't reuse it, and too many wrong guesses get blocked. Made a mistake about who should have access? Press <strong>New password</strong> and the old one stops working straight away.</p>
-
-      <h2>A proper first-run setup</h2>
-      <p>The first time you open Lodestone, a short setup walks you through picking a theme, a couple of preferences, logging in to playit.gg, and making your first server, or connecting to a friend's. Every step can be skipped.</p>
-      <figure class="post-figure"><img src="../assets/shots/welcome.png" alt="The last step of Lodestone's first-run setup" /><figcaption>The setup's last step: make a server, or connect to a friend's.</figcaption></figure>
-
-      <h2>Game rules as switches</h2>
-      <p>Keep inventory, the day and night cycle, weather, mob griefing, fire spread, phantoms, health regeneration, instant respawn, death messages, and how many players need to sleep to skip the night, all in a server's <strong>Gameplay</strong> settings.</p>
-      <p>While the server runs, changes apply instantly. When it's stopped, Lodestone remembers them and applies them the moment it starts. It works on old and new Minecraft versions alike, even though the newest ones renamed the rules.</p>
-      <figure class="post-figure"><img src="../assets/shots/gamerules.png" alt="Game rules in a server's Gameplay settings" /><figcaption>Game rules in the Gameplay settings.</figcaption></figure>
-
-      <h2>playit.gg works again</h2>
-      <p>playit.gg changed what it accepts, and Lodestone's built-in tunnel stopped connecting for some people. 0.2.0 uses playit's current agent, starts it as soon as you log in and every time Lodestone opens, and clears the addresses of tunnels you've removed so you never send friends an address that's gone. The playit.gg logo now shows where it's used.</p>
-      <figure class="post-figure"><img src="../assets/shots/tunnels.png" alt="A server's public addresses" /><figcaption>A server's addresses: Java, Bedrock and voice chat.</figcaption></figure>
-
-      <h2>Nothing installed on your servers</h2>
-      <p>Earlier versions installed a helper mod, the Lodestone Bridge, on some servers. It's gone. Every server, from Vanilla to big modpacks, is now managed through Minecraft's own remote console, so the mods on your server are only the ones you chose.</p>
-
-      <h2>And more</h2>
-      <ul>
-        <li>Fixed a crash when opening a connected server's Settings.</li>
-        <li>Friends connected with a password no longer need to be operators to use player tools.</li>
-      </ul>
-
-      <div class="post-cta">
-        <h3>Get Lodestone 0.2.0</h3>
-        <p>Already have Lodestone? It updates itself the next time it opens.</p>
-        <a class="btn btn-primary btn-lg" href="../download.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4.5 10.5 3.4v8.1H3V4.5Zm0 15 7.5 1.1v-8H3v6.9Zm8.4 1.2L21 22v-9.4h-9.6v8.1Zm0-17.4v8.2H21V2L11.4 3.3Z"/></svg><span>Download for Windows</span></a>
-      </div>
-    </article>
-  </main>
-
-  <footer class="footer">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="../"><img src="../assets/logo.png" alt="" width="30" height="30" /> Lodestone</a>
-        <p>The easy way to create, share and manage Minecraft servers on your own PC. Free, with no port forwarding.</p>
-        <p class="made">Made with <span class="heart">♥</span> by the Lodestone team</p>
-        <div class="foot-actions">
-          <a class="btn btn-kofi btn-sm kofi-link" href="#" aria-disabled="true"><span class="cup">☕</span> Ko-fi <span class="soon">Soon</span></a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <h5>Product</h5>
-        <a href="../#features">Features</a>
-        <a href="../#why">Why Lodestone</a>
-        <a href="../download.html">Download</a>
-        <a href="../updates.html">Updates</a>
-      </div>
-      <div class="foot-col">
-        <h5>Support</h5>
-        <a href="../#faq">FAQ</a>
-        <a href="https://github.com/SparkFruit/lodestone-releases/issues">Report a problem ↗</a>
-        <a href="../download.html#versions">All versions</a>
-        <a class="kofi-link" href="#" aria-disabled="true">Ko-fi (soon)</a>
-      </div>
-      <div class="foot-col">
-        <h5>Built with</h5>
-        <a href="https://playit.gg">playit.gg ↗</a>
-        <a href="https://modrinth.com">Modrinth ↗</a>
-        <a href="https://github.com/jpenilla/squaremap">squaremap ↗</a>
-        <a href="https://geysermc.org">Geyser ↗</a>
-      </div>
-    </div>
-    <div class="foot-legal">
-      <p>© <span id="year">2026</span> Lodestone. Minecraft is a trademark of Mojang Studios.</p>
-      <p>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft. Not affiliated with playit.gg, Modrinth, CurseForge or any service compared on this site.</p>
-    </div>
-  </footer>
-
-  <script src="../app.js?v=6"></script>
+<body style="font-family:system-ui,sans-serif;background:#0d0b14;color:#eee;text-align:center;padding:4rem 1rem">
+<p>Lodestone's website has moved to <a style="color:#a78bfa" href="https://lodestone-app.github.io/posts/lodestone-0-2-0.html">lodestone-app.github.io</a>.</p>
 </body>
 </html>
