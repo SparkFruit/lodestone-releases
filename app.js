@@ -63,24 +63,18 @@ fill("track-b", features);
 
 // ---------------------------------------------------------------- comparison
 // Columns: Lodestone, SquidServers, Aternos, Minehut, playit.gg, e4mc, Essential.
-const Y = (text = "Yes") => ["yes", "✓", text];
+const Y = () => ["yes", "✓", "Yes"];
 const P = (text) => ["part", "–", text];
-const N = (text = "No") => ["no", "✕", text];
-const X = () => N();
-const Q = () => N();
-const NOT_A_SERVER = N();
+const N = () => ["no", "✕", "No"];
 const rows = [
   ["Free", "No monthly fees", [Y(), Y(), Y(), P("Free tier"), Y(), Y(), Y()]],
   ["No port forwarding", "Works behind any router", [Y(), Y(), Y(), Y(), Y(), Y(), Y()]],
-  ["Runs on your own PC", "Your CPU and memory, no limits", [Y(), Y(), N(), N(), Y(), Y(), Y()]],
-  ["Stays online when you leave", "Friends keep playing without you", [Y(), Y(), P("Stops when empty"), P("Sleeps when empty"), Y("With your server"), N(), N()]],
-  ["Sets up the server for you", "Java, server and settings", [Y(), Y(), Y(), Y(), X(), X(), X()]],
-  ["Any mods or modpack", "Modrinth, CurseForge or your own jars", [Y(), Y(), P("From their list"), P("Limited"), X(), Y("Your game's mods"), Y("Your game's mods")]],
-  ["No queues or time limits", "Start it whenever you like", [Y(), Y(), P("Queues when busy"), P("Limits on free"), Y(), Y(), Y()]],
-  // A few things Lodestone adds on top.
-  ["Friends can help manage", "With a password; you keep start, stop and delete", [Y("From their own app"), Q(), Y("Shared access"), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
-  ["Live world map", "Players moving on your world, built in", [Y("Built in"), Q(), P("Via plugins"), P("Via plugins"), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
-  ["Performance analytics", "TPS, memory, players over time", [Y(), Q(), Q(), Q(), NOT_A_SERVER, NOT_A_SERVER, NOT_A_SERVER]],
+  ["Stays online when you leave", "Friends keep playing without you", [Y(), Y(), P("Stops when empty"), P("Sleeps when empty"), Y(), N(), N()]],
+  ["Sets up the server for you", "Pick a version and go", [Y(), Y(), Y(), Y(), N(), N(), N()]],
+  ["Any mods or modpack", "Modrinth, CurseForge or your own", [Y(), Y(), P("Some"), P("Some"), N(), Y(), Y()]],
+  ["Performance analytics", "TPS, memory and players", [Y(), Y(), N(), N(), N(), N(), N()]],
+  ["Friends can help manage", "With a password you give them", [Y(), N(), Y(), N(), N(), N(), N()]],
+  ["Live world map", "Built in, no plugins", [Y(), N(), N(), N(), N(), N(), N()]],
 ];
 const cell = ([kind, mark, text], us) => `<td${us ? ' class="us"' : ""}><span class="mark ${kind}">${mark}</span><span>${text}</span></td>`;
 const compareBody = document.getElementById("compare-body");
