@@ -32,12 +32,12 @@ if (rotate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
 // ---------------------------------------------------------------- scrolling rows
 const types = [
   ["grass_block", "Vanilla", "The game as Mojang makes it"],
-  ["bookshelf", "Paper", "Fast, with Bukkit plugins"],
-  ["amethyst_block", "Purpur", "Paper with extra options"],
-  ["crafting_table", "Fabric", "Light mods, quick updates"],
-  ["barrel", "NeoForge", "Big modded worlds"],
-  ["chest", "Forge", "The classic mod loader"],
-  ["emerald_ore", "Quilt", "Fabric-compatible mods"],
+  ["loaders/paper.png", "Paper", "Fast, with Bukkit plugins"],
+  ["loaders/purpur.svg", "Purpur", "Paper with extra options"],
+  ["loaders/fabric.png", "Fabric", "Light mods, quick updates"],
+  ["loaders/neoforge.png", "NeoForge", "Big modded worlds"],
+  ["loaders/forge.svg", "Forge", "The classic mod loader"],
+  ["loaders/quilt.svg", "Quilt", "Fabric-compatible mods"],
   ["diamond_ore", "Modpacks", "From Modrinth and CurseForge"],
   ["gold_block", "Bedrock", "Phones, consoles and Windows"],
 ];
@@ -51,8 +51,12 @@ const features = [
   ["bookshelf", "Mods in one click", "Dependencies included"],
   ["gold_block", "Geyser", "Bedrock players on Java"],
 ];
-const chip = ([block, title, text]) =>
-  `<div class="chip"><img src="assets/blocks/${block}.webp" alt="" loading="lazy" /><div><b>${title}</b><span>${text}</span></div></div>`;
+// A card's picture is a block ("chest") or, for server types, their logo ("loaders/paper.png").
+const chip = ([image, title, text]) => {
+  const logo = image.includes("/");
+  const src = logo ? `assets/${image}` : `assets/blocks/${image}.webp`;
+  return `<div class="chip"><img${logo ? ' class="logo"' : ""} src="${src}" alt="" loading="lazy" /><div><b>${title}</b><span>${text}</span></div></div>`;
+};
 // Each row holds its cards twice, so scrolling by half loops without a jump.
 const fill = (id, list) => {
   const track = document.getElementById(id);
