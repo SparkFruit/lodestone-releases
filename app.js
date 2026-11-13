@@ -38,8 +38,8 @@ const types = [
   ["loaders/neoforge.png", "NeoForge", "Big modded worlds"],
   ["loaders/forge.svg", "Forge", "The classic mod loader"],
   ["loaders/quilt.svg", "Quilt", "Fabric-compatible mods"],
-  ["diamond_ore", "Modpacks", "From Modrinth and CurseForge"],
-  ["gold_block", "Bedrock", "Phones, consoles and Windows"],
+  ["barrel", "Modpacks", "From Modrinth and CurseForge"],
+  ["blocks/bedrock.png", "Bedrock", "Phones, consoles and Windows"],
 ];
 const features = [
   ["lodestone", "No port forwarding", "Addresses through playit.gg"],
@@ -51,10 +51,11 @@ const features = [
   ["bookshelf", "Mods in one click", "Dependencies included"],
   ["gold_block", "Geyser", "Bedrock players on Java"],
 ];
-// A card's picture is a block ("chest") or, for server types, their logo ("loaders/paper.png").
+// A card's picture is a block ("chest"), a file in assets ("blocks/bedrock.png"), or a server
+// type's logo ("loaders/paper.png"). Server types use the same pictures as the app.
 const chip = ([image, title, text]) => {
-  const logo = image.includes("/");
-  const src = logo ? `assets/${image}` : `assets/blocks/${image}.webp`;
+  const logo = image.startsWith("loaders/");
+  const src = image.includes("/") ? `assets/${image}` : `assets/blocks/${image}.webp`;
   return `<div class="chip"><img${logo ? ' class="logo"' : ""} src="${src}" alt="" loading="lazy" /><div><b>${title}</b><span>${text}</span></div></div>`;
 };
 // Each row holds its cards twice, so scrolling by half loops without a jump.
